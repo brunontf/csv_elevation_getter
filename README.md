@@ -1,0 +1,1 @@
+A script that read a csv file with lat and long coordinates and getter the respectiv elevation coordinate using open-elevation API.
