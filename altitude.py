@@ -3,12 +3,15 @@ import requests
 
 
 rows=[]
+coluna_lat=3  #lembrar que a primeira coluna é a "0", a primeira necess. tem que ser LATITUDE
+coluna_long=4
+nome_do_arquivo = 'sismos.csv'
 
-with open('sismos.csv','r') as file:
+with open(nome_do_arquivo,'r') as file:
     arquivo_lido = csv.reader(file)
     header= next(arquivo_lido)
     for row in arquivo_lido:
-        rows.append(row[3:5]) #seleciona as colunas que de lat e long
+        rows.append(row[coluna_lat:coluna_long+1]) #seleciona as colunas que de lat e long
     
 
     for row in rows:
@@ -23,7 +26,7 @@ with open('sismos.csv','r') as file:
 
     with open('saída.csv','w', newline="") as saida:
         escrever= csv.writer(saida)
-        header.insert(5,'Altitude') #insere o cabeçalho
-        escrever.writerow(header[3:6]) #insere o cabeçalho
+        header.insert(coluna_long+1,'Altitude') #insere o cabeçalho
+        escrever.writerow(header[coluna_lat:coluna_long+2]) #insere o cabeçalho
         escrever.writerows(rows)
-
+print("ACABOU! \n \nou não")
