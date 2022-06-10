@@ -1,5 +1,7 @@
-jupyter_teste.ipynb
-sismos - Copia.csv
+sismos.csv
 test.py
-__pycache__/pandas.cpython-39.pyc
-teste_pandas.py
+test2.py
+__pycache__/
+compilado.csv
+Compilado_filtrado_BR-163.csv
+comp_json2_1.json

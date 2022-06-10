@@ -1,32 +1,32 @@
-import csv
 import requests
+import file_converter
 
+# input variables
 
-rows=[]
-coluna_lat=3  #lembrar que a primeira coluna é a "0", a primeira necess. tem que ser LATITUDE
-coluna_long=4
-nome_do_arquivo = 'sismos.csv'
+input_csv_filename =  "input.csv"
+output_csv_filename = "output.csv"
+output_json_filename= "output.json" #You need to uncomment below
+latitude_column_number= 3  #remember that the first column is "0", and that the LAT column must necessarily be before the Long column in the csv file
+longitude_column_number=4
 
-with open(nome_do_arquivo,'r') as file:
-    arquivo_lido = csv.reader(file)
-    header= next(arquivo_lido)
-    for row in arquivo_lido:
-        rows.append(row[coluna_lat:coluna_long+1]) #seleciona as colunas que de lat e long
-    
+json_file_converted = 'temp_json.json' #temp file created
+# _______________________________________________________________________
 
-    for row in rows:
-        lat= row[0]
-        long= row[1]
+# Converting the CSV file into a JSON file
+file_converter.convert_csv_to_json(input_csv_filename,json_file_converted,latitude_column_number,longitude_column_number)
 
-        response = requests.get('https://api.open-elevation.com/api/v1/lookup?locations='+str(lat)+','+str(long))
-        response = response.json()
+#Using OpenElevation API
+data= file_converter.adapting_json(json_file_converted)
+elevation_list = requests.post('https://api.open-elevation.com/api/v1/lookup', json=data)
+elevation_list = elevation_list.json()['results']
 
-        elevation=(response['results'][0]['elevation'])
-        row.append(elevation)
+#saving the data as CSV format
+file_converter.saving_in_csv(elevation_list, output_csv_filename)
 
-    with open('saída.csv','w', newline="") as saida:
-        escrever= csv.writer(saida)
-        header.insert(coluna_long+1,'Altitude') #insere o cabeçalho
-        escrever.writerow(header[coluna_lat:coluna_long+2]) #insere o cabeçalho
-        escrever.writerows(rows)
-print("ACABOU! \n \nou não")
+#saving the data as JSON array format
+# file_converter.saving_in_json(elevation_list, output_json_filename)
+
+# Do you wanna save the OpenElevation API formated json???
+# file_converter.saving_formated_json(data,json_file_converted)
+
+print("\n DONE!")
