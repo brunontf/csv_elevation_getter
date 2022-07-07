@@ -3,6 +3,7 @@ A python3 script that reads a csv file with latitude and longitude coordinates a
 
 ## Required Libs
 **requests** > install pasting " python -m pip install requests " in your cmd
+
 **pandas**  > install pasting  " pip install pandas " in your cmd
 
 # How to use
