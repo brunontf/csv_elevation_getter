@@ -8,7 +8,6 @@ A python3 script that reads a csv file with latitude and longitude coordinates a
 
 **requests** > install pasting " python -m pip install requests " in your cmd
 
-<<<<<<< HEAD
 **pandas** > install pasting " pip install pandas " in your cmd
 
   
@@ -18,15 +17,11 @@ A python3 script that reads a csv file with latitude and longitude coordinates a
 **PySimpleGUI** install pasting "pip install PySimpleGUI" in you cmd
 
   
-=======
-**pandas**  > install pasting  " pip install pandas " in your cmd
->>>>>>> 62ec6ba5624f8d80cfcde776f7349100142a8ee2
 
 # How to use
 
 Rename the input_csv_filename in code preserving the ".csv"
 
-<<<<<<< HEAD
   
 
 1. Download this code in ZIP format from the green button Code above.
@@ -51,8 +46,3 @@ output_json_filename= "output.json"
 
 If you are using the **Graphic Interface mode**, just open elevation_GUI.py typing "python elevation_GUI.py" in cmd/powershell. 
 >Ps: the cmd has to be opened in your current folder.
-=======
-	input_csv_filename = "input.csv"
-	output_csv_filename = "output.csv"
-	output_json_filename= "output.json"
->>>>>>> 62ec6ba5624f8d80cfcde776f7349100142a8ee2
